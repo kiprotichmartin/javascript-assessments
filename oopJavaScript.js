@@ -4,6 +4,7 @@ let cashierMixin = {
   collectCash() {
     let cash = 1000;
     console.log("Your cash is: " + cash);
+    // return this;
   },
 };
 
@@ -13,6 +14,7 @@ let pharmasistMixin = {
   writePrescription() {
     let prescription = "Panadol";
     console.log("Your prescription is: " + prescription);
+    // return this;
   }
 };
 
@@ -30,45 +32,75 @@ let managerMixin = {
 
 // class users
 ///////////////////////////
-class Users {
-  constructor(name) {
-    this.name = name;
-  }
-  printName() {
-    console.log(this.name);
-  }
-}
+// class Users {
+  // constructor(name) {
+  //   this.name = name;
+  // }
+//   printName() {
+//     console.log(this.name);
+//   }
+// }
 
 // class cashier extends class users
 ///////////////////////////
-class Cashier extends Users {
-  // 
+class Cashier {
+  constructor(name) {
+    this.name = name;
+  }
 }
 
 // cashier's mixin methods are copied to class cashier
-Object.assign(Cashier.prototype, cashierMixin);
+// Object.assign(Cashier.prototype, cashierMixin);
 
 // class pharmasist extends class cashier
 ///////////////////////////
-class Pharmasist extends Cashier {
-  // 
+class Pharmasist {
+  constructor(name) {
+    this.name = name;
+  }
 }
 
 // pharmasist's & cashier's mixin methods are copied to class pharmasist
-Object.assign(Pharmasist.prototype, pharmasistMixin, cashierMixin);
+// Object.assign(Pharmasist.prototype, pharmasistMixin, cashierMixin);
 
 // class manager extends class pharmasist
 ///////////////////////////
-class Manager extends Pharmasist {
-  //
+class Manager {
+  constructor(name) {
+    this.name = name;
+  }
 }
 
 // manager's, cashier's & pharmasist's mixin methods are copied to class manager
-Object.assign(Manager.prototype, managerMixin, cashierMixin, pharmasistMixin);
+// Object.assign(Manager.prototype, managerMixin, cashierMixin, pharmasistMixin);
 
 // create new users
-let pharmasist = new Pharmasist("Jane Pharma");
 let cashier = new Cashier("Mark Cashier");
-let manager = new Manager("Mercy Manager");
+Object.assign(cashier, cashierMixin);
+
+let pharmasist = new Pharmasist("Mercy Pharmasist");
+Object.assign(pharmasist, pharmasistMixin, cashierMixin);
+
+let manager = new Manager("Martin Manager");
+Object.assign(manager, managerMixin, cashierMixin, pharmasistMixin);
+
+
+console.log("Cashier's response:");
+
+cashier.collectCash();
+
+console.log(" ");
+console.log("Pharmasist's response");
+
+pharmasist.collectCash();
+pharmasist.writePrescription();
+
+console.log(" ");
+console.log("Manager's response");
 
 manager.collectCash();
+manager.writePrescription();
+manager.deleteUser(cashier);
+manager.deleteUser(pharmasist);
+manager.deleteUser(manager);
+manager.beCashierAndPharma();
