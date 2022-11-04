@@ -1,4 +1,4 @@
-let str = "Lorem at";
+let str = "She sells sea shells by the sea shore";
 
 // method 1: for loop
 function reverseString() {
