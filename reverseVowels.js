@@ -8,8 +8,6 @@ function reverseVowels(initialValue) {
 
   let vowelIndex = [];
 
-  let constantsArr = [];
-
   let final = [];
 
   // iterate vowels array
