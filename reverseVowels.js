@@ -12,6 +12,7 @@ function reverseVowels(initialValue) {
 
   // iterate vowels array
   for (let i = 0; i < vowelsArr.length; i++) {
+    // iterate the input string array
     for (let j = 0; j < valueArr.length; j++) {
       if (valueArr[j] === vowelsArr[i]) {
         stringVowels.push(valueArr[j]);
@@ -22,7 +23,12 @@ function reverseVowels(initialValue) {
   let reversedStringVowels = stringVowels.reverse();
   console.log(reversedStringVowels);
   console.log(vowelIndex);
-  console.log(constantsArr);
+
+  for (let i = 0; i < valueArr.length; i++) {
+    if (valueArr.indexOf(reversedStringVowels[i]) === vowelIndex[i]) {
+      
+    }
+  }
 
 }
 
