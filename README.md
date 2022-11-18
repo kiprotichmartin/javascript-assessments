@@ -1,1 +1,1 @@
-This is a repo of JavaScript assessments provided by The Jitu.
+This is the third assessment on SQL.
